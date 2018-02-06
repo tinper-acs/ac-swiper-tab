@@ -1,0 +1,74 @@
+
+import { Con, Row, Col } from 'bee-layout';
+import { Panel } from 'bee-panel';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Button from 'bee-button';
+import './demo.scss';
+
+
+
+const CARET = <i className="uf uf-arrow-down"></i>;
+
+const CARETUP = <i className="uf uf-arrow-up"></i>;
+
+
+import Demo1 from "./demolist/Demo1";
+var DemoArray = [{"example":<Demo1 />,"title":" 这是标题","code":"/**\n*\n* @title 这是标题\n* @description 这是描述\n*\n*/\n\nimport React, { Component } from 'react';\nimport SwiperTab from 'app-component-templ';\n\nclass Demo1 extends Component{\n  constructor(props){\n    super(props);\n    this.state = {\n      checkedHonorList: [],\n      currentIndex1: 0,\n      swiperArray: []\n    }\n  };\n \n  componentDidMount(){\n    \n    let swiperArray = [\n        [\n          {\n              \"id\":1,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/1.png\",\n              \"name\":\"拼命三郎\"\n          },\n          {\n              \"id\":2,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/2.png\",\n              \"name\":\"行家里手\"\n          },\n          {\n              \"id\":3,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/3.png\",\n              \"name\":\"勇于担当\"\n          },{\n              \"id\":1,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/1.png\",\n              \"name\":\"拼命三郎\"\n          },\n          {\n              \"id\":2,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/2.png\",\n              \"name\":\"行家里手\"\n          },\n          {\n              \"id\":3,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/3.png\",\n              \"name\":\"勇于担当\"\n          },{\n              \"id\":1,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/1.png\",\n              \"name\":\"拼命三郎\"\n          },\n          {\n              \"id\":2,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/2.png\",\n              \"name\":\"行家里手\"\n          },\n          {\n              \"id\":3,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/3.png\",\n              \"name\":\"勇于担当\"\n          },{\n              \"id\":1,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/1.png\",\n              \"name\":\"拼命三郎\"\n          },\n          {\n              \"id\":2,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/2.png\",\n              \"name\":\"行家里手\"\n          },\n          {\n              \"id\":3,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/3.png\",\n              \"name\":\"勇于担当\"\n          },{\n              \"id\":1,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/1.png\",\n              \"name\":\"拼命三郎\"\n          },\n          {\n              \"id\":2,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/2.png\",\n              \"name\":\"行家里手\"\n          },\n          {\n              \"id\":3,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/3.png\",\n              \"name\":\"勇于担当\"\n          }\n        ],\n        [\n          {\n              \"id\":1,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/1.png\",\n              \"name\":\"拼命三郎\"\n          },\n          {\n              \"id\":2,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/2.png\",\n              \"name\":\"行家里手\"\n          }\n        ],\n        [\n          {\n              \"id\":1,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/1.png\",\n              \"name\":\"拼命三郎\"\n          },\n          {\n              \"id\":2,\n              \"award\":2,\n              \"value\":1,\n              \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/2.png\",\n              \"name\":\"行家里手\"\n          }\n        ]\n      \n      ]\n\n\n    this.setState({swiperArray:swiperArray});\n  }\n\n  // 添加荣耀tag\n  handleAddTag = () => {\n    console.log(\"添加tag头部\");\n  }\n\n  //选中某个item后的回调\n  onSelectItem = (activeIndex,column,index) => {\n    console.log(\"选中第\"+activeIndex+\"组第\"+column+\"列第\"+(index+1)+\"个\");\n  }\n\n  //删除\n  handleDelete = (index) => {\n    console.log(`在第${index}组删除`);\n    this.state.swiperArray[index].splice(1,1);\n  }\n\n  //添加\n  handlerAdd = (index) => {\n    console.log(`在第${index}组添加`);\n    let tempAddItem = {\n        \"id\":1,\n        \"award\":2,\n        \"value\":1,\n        \"logo\":\"http://hongbao-test.app.yyuap.com/static/img/honor-icon/1.png\",\n        \"name\":\"拼命三郎\"\n    };\n    this.state.swiperArray[index].push(tempAddItem);\n\n  }\n\n  handleChangeTab = (activeIndex) => {\n      console.log(activeIndex);\n  }\n  \n  renderItem = (item) => {\n    return {img:item.logo,label:item.name};\n  }\n\n  render(){\n  \tif(!this.state.swiperArray.length) return <span></span>\n    return (\n    \t<div id=\"app\">\n        \t<SwiperTab \n            showOper={true} \n            activeIndex={0}\n            onChangeTab={this.handleChangeTab}\n            columnItemNum={8} \n            title={[\"群组1\",\"群组2\",\"群组3\"]} \n            onSelectItem={this.onSelectItem} \n            swiperArray={this.state.swiperArray} \n            addItem={this.handlerAdd} \n            deleteItem={this.handleDelete}\n            render={item => this.renderItem(item) }  />\n      \t</div>\n      );\n  }\n\n\n}\n\n\n","desc":" 这是描述"}]
+
+
+class Demo extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            open: false
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick() {
+        this.setState({ open: !this.state.open })
+    }
+
+    render () {
+        const { title, example, code, desc  } = this.props;
+        let caret = this.state.open ? CARETUP : CARET;
+        let text = this.state.open ? "隐藏代码" : "查看代码";
+
+        const footer = (
+            <Button shape="block" onClick={ this.handleClick }>
+                { caret }
+                { text }
+            </Button>
+        );
+        return (
+            <Col md={12} >
+                <h3>{ title }</h3>
+                <p>{ desc }</p>
+                <Panel collapsible expanded={ this.state.open } colors='bordered' header={ example } footer={footer} footerStyle = {{padding: 0}}>
+                    <pre><code className="hljs javascript">{ code }</code></pre>
+                </Panel>
+            </Col>
+        )
+    }
+}
+
+class DemoGroup extends Component {
+    constructor(props){
+        super(props)
+    }
+    render () {
+        return (
+                <Row>
+                    {DemoArray.map((child,index) => {
+
+                        return (
+                            <Demo example= {child.example} title= {child.title} code= {child.code} desc= {child.desc} key= {index}/>
+                        )
+
+                    })}
+                </Row>
+        )
+    }
+}
+
+ReactDOM.render(<DemoGroup/>, document.getElementById('root'));
