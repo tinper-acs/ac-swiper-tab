@@ -7,6 +7,7 @@ import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 import Item from './item';
 import './Swiper.js';
+import './SwiperTab.scss';
 
 const propType = {
   // tab数据
@@ -31,14 +32,14 @@ class SwiperTab extends Component{
       activeIndex: this.props.activeIndex || 0,
       swiperArray: this.props.swiperArray
     }
-    
+
   }
   componentDidUpdate() {
     console.log("didUpdate");
     this.swiperNested[this.state.activeIndex].update();
   }
   componentDidMount() {
-    
+
     let self = this;
     window.onload = function(){
       self.swiperNested = new Swiper('.swiper-nested',{
@@ -57,7 +58,7 @@ class SwiperTab extends Component{
     let self =this;
     return function() {
       const { onSelectItem,multiCheck } = self.props;
-  
+
       if(onSelectItem) {
         onSelectItem(self.state.activeIndex,column,index);
       }
@@ -115,7 +116,7 @@ deleteItem = () => {
               {self.renderColumn(item,column,totalColum)}
           </div>
     nestDom.push(dom);
-                   
+
   })
   return  <div className="swiper-wrapper">{nestDom}</div>;
  }
@@ -132,13 +133,13 @@ renderColumn = (data,column,totalColum) => {
   //index  本列第几个
   data.map( (item,index) => {
     columsArray.push(
-      <Item 
-        key={index} 
+      <Item
+        key={index}
         item={item}
-        column={column} 
+        column={column}
         HandleSelectItem={self.HandleSelectItem}
         checked={item.checked}
-        render={self.props.render} 
+        render={self.props.render}
       />)
   })
   if(this.props.showOper) {
@@ -152,7 +153,7 @@ renderColumn = (data,column,totalColum) => {
       columsArray.push(operDom)
     }
   }
-  
+
   return <div className="columns">{columsArray}</div>;
 }
 
@@ -161,7 +162,7 @@ splitData = (data=[]) => {
   let totalColum = Math.ceil(data.length/splitNum);
   let nestArray = [];
   let j = 0;
-  
+
   for(var i=0;i<totalColum;i++) {
     nestArray.push(data.slice(j,j+splitNum));
     j = j+splitNum;
@@ -181,7 +182,7 @@ toggleHonorTab = (id) => {
  render() {
     return (
       <div>
-        <div className="tabs-container"> 
+        <div className="tabs-container">
         <Tabs
         defaultActiveKey = "0"
         activeKey = {this.state.activeIndex.toString()}
@@ -190,10 +191,10 @@ toggleHonorTab = (id) => {
         renderTabBar={()=><ScrollableInkTabBar />}
         renderTabContent={()=><TabContent />}
       >
-          
+
           {this.renderTabTitle()}
         </Tabs>
-         
+
         </div>
         <div className="swiper-container swiper-outerside">
           {this.renderSwiper()}
