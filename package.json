@@ -1,5 +1,5 @@
 {
-  "name": "ac-swiper-tab",
+  "name": "@yonyou/ac-swiper-tab",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -22,7 +22,7 @@
     "type": "git",
     "url": "git+https://github.com/tinper-acs/ac-swiper-tab.git"
   },
-  "author": "17310740616",
+  "author": "wangshih@yonyou.com",
   "license": "MIT",
   "files": [
     "package.json",
